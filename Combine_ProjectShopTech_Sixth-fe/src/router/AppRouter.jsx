@@ -202,17 +202,17 @@ import NotFound from "../pages/NotFound/NotFound";
 const AppRouter = () => {
   const { getUserRole, loading: _loading } = useContext(UserContext);
 
-  // Temporarily disable loading check for debugging
-  // if (_loading) {
-  //   return (
-  //     <div className="flex items-center justify-center h-screen">
-  //       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-700"></div>
-  //     </div>
-  //   );
-  // }
-
   const userRole = getUserRole();
   console.log("Current user role:", userRole);
+
+  // Bật lại loading check để tránh render trước khi auth xong
+  if (_loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-700"></div>
+      </div>
+    );
+  }
 
   return (
     <BrowserRouter>
