@@ -670,6 +670,12 @@
     "topBrands": "Top Brands",
     "viewAll": "View All Brands →"
   },
+  "notfound": {
+    "title": "Page Not Found",
+    "message": "The page you are looking for does not exist or you do not have permission to access it.",
+    "submessage": "You can go back to the previous page or continue exploring our store.",
+    "go_back": "Go Back"
+  },
   "support": {
     "helpCenter": "Help Center",
     "trackOrder": "📦 Track Order",

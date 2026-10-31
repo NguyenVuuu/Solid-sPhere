@@ -682,6 +682,12 @@
     "returns": "↩️ Đổi Trả",
     "customerService": "💬 Dịch Vụ Khách Hàng"
   },
+  "notfound": {
+    "title": "Trang Không Tìm Thấy",
+    "message": "Đường dẫn bạn truy cập có thể không tồn tại hoặc bạn không có quyền.",
+    "submessage": "Bạn có thể quay lại trang trước hoặc tiếp tục khám phá cửa hàng.",
+    "go_back": "Quay Lại"
+  },
   "account": {
     "myAccount": "👤 Tài Khoản Của Tôi",
     "manage": "⚙️ Quản Lý",

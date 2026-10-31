@@ -6,7 +6,27 @@ const CHAT_API_URL = import.meta.env.VITE_CHAT_API_URL || "http://localhost:5000
 const ChatBox = () => {
   const { isCustomerService, isAdmin } = useContext(UserContext);
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  
+
+  // ── Tất cả hooks phải khai báo trước mọi conditional return ──
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
+  const [colorTheme, setColorTheme] = useState("gradient");
+  const [unreadCount, setUnreadCount] = useState(0);
+  const messagesContainerRef = useRef(null);
+  const [selectedImages, setSelectedImages] = useState([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const [showImagePreview, setShowImagePreview] = useState(false);
+  const [compareMode, setCompareMode] = useState(false);
+  const fileInputRef = useRef(null);
+  const fileInputRefMultiple = useRef(null);
+  const [sessionId] = useState(() => {
+    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  });
+
   // Lắng nghe thay đổi URL
   useEffect(() => {
     const handleLocationChange = () => {
@@ -36,7 +56,9 @@ const ChatBox = () => {
       window.history.replaceState = originalReplaceState;
     };
   }, []);
-  
+
+  // ── Conditional returns SAU khi đã khai báo hết hooks ──
+
   // Ẩn ChatBox nếu user là nhân viên chăm sóc khách hàng
   if (isCustomerService) {
     return null;
@@ -53,28 +75,6 @@ const ChatBox = () => {
   if (isAdmin) {
     return null;
   }
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef(null);
-  const [colorTheme, setColorTheme] = useState("gradient");
-  const [unreadCount, setUnreadCount] = useState(0);
-  const messagesContainerRef = useRef(null);
-  
-  // THÊM CÁC STATE MISSING NÀY:
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [isUploading, setIsUploading] = useState(false);
-  const [showImagePreview, setShowImagePreview] = useState(false);
-  const [compareMode, setCompareMode] = useState(false);
-  const fileInputRef = useRef(null);
-  const fileInputRefMultiple = useRef(null);
-
-  // Create sessionId from memory (removed localStorage)
-  const [sessionId] = useState(() => {
-    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-  });
 
   // Enhanced theme configuration with modern 2025 aesthetics
   const themes = {
