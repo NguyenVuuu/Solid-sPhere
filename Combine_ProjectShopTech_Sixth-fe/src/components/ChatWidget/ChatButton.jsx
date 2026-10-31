@@ -9,7 +9,7 @@ const ChatButton = () => {
   const { t } = useTranslation("translation");
 
   // Ẩn ChatButton nếu user là nhân viên chăm sóc khách hàng
-  if (isCustomerService && isCustomerService()) {
+  if (isCustomerService) {
     return null;
   }
 
