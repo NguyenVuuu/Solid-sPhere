@@ -6,7 +6,7 @@ WORKDIR /app
 # Copy Maven wrapper và pom trước để cache dependencies
 COPY .mvn .mvn
 COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline -B
+RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
 # Copy source và build
 COPY src ./src
