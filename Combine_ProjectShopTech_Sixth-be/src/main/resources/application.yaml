@@ -1,0 +1,125 @@
+server:
+  port: ${SERVER_PORT:8081}
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+
+gemini:
+  api:
+    key: ${GEMINI_API_KEY}
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  devtools:
+    restart:
+      enabled: false
+  ai:
+    openai:
+      api-key: ${SPRING_AI_API_KEY:${GEMINI_API_KEY}}
+      base-url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+      chat:
+        options:
+          model: "gemini-2.5-flash"
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true # Giữ nguyên true để Hibernate tạo table trước, rồi mới chạy file SQL
+    show-sql: true
+    properties:
+      'hibernate.dialect': org.hibernate.dialect.MySQL8Dialect
+  sql:
+    init:
+      mode: never 
+      data-locations: classpath:data-complete.sql
+  cache:
+    type: redis
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    listener:
+      simple:
+        auto-startup: false
+        retry:
+          enabled: true
+          max-attempts: 3
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: openid, profile, email
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+    default-encoding: UTF-8
+
+security:
+  oauth2:
+    resourceserver:
+      jwt:
+        issuer-uri: ${JWT_ISSUER_URI:http://localhost:8080/realms/demo}
+    client:
+      enabled: true
+  jwt:
+    enabled: true
+    secret: ${JWT_SECRET_KEY}
+    expiration-seconds: 2592000 # 30 days
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  valid-duration: 30 # minutes
+  refreshable-duration: 30 # days
+
+openapi:
+  service:
+    api-docs: api-service
+    serverUrl: ${OPENAPI_SERVER_URL:/}
+    serverName: Server Dev
+    description: API documents for Shop Online
+    title: API Document
+    version: v1.0.0
+
+bucket4j:
+  enabled: true
+  filters:
+    - cache-name: bucket4j-rate-limits
+      url: /api/.*
+      rate-limits:
+        - bandwidths:
+            - capacity: 100
+              time: 1
+              unit: minutes
+          expression: "getRemoteAddr()" # rate limit theo IP
+
+rabbitmq:
+  exchange: toxic-detect-exchange-sql
+  queue: toxic-detect-queue-sql
+  routing-key: result-detect-queue-sql

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Endpoints</title>
+</head>
+<body>
+    <h1>Test API Endpoints</h1>
+    
+    <div>
+        <h2>Test Reviews API</h2>
+        <button onclick="testReviewsAPI()">Test GET /api/reviews</button>
+        <div id="reviews-result"></div>
+    </div>
+    
+    <div>
+        <h2>Test Discounts API</h2>
+        <button onclick="testDiscountsAPI()">Test GET /api/discounts</button>
+        <div id="discounts-result"></div>
+    </div>
+    
+    <div>
+        <h2>Test Products API</h2>
+        <button onclick="testProductsAPI()">Test GET /api/products</button>
+        <div id="products-result"></div>
+    </div>
+
+    <script>
+        async function testReviewsAPI() {
+            try {
+                const response = await fetch('http://localhost:8080/api/reviews');
+                const data = await response.json();
+                document.getElementById('reviews-result').innerHTML = 
+                    '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('reviews-result').innerHTML = 
+                    '<p style="color: red;">Error: ' + error.message + '</p>';
+            }
+        }
+        
+        async function testDiscountsAPI() {
+            try {
+                const response = await fetch('http://localhost:8080/api/discounts');
+                const data = await response.json();
+                document.getElementById('discounts-result').innerHTML = 
+                    '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('discounts-result').innerHTML = 
+                    '<p style="color: red;">Error: ' + error.message + '</p>';
+            }
+        }
+        
+        async function testProductsAPI() {
+            try {
+                const response = await fetch('http://localhost:8080/api/products');
+                const data = await response.json();
+                document.getElementById('products-result').innerHTML = 
+                    '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('products-result').innerHTML = 
+                    '<p style="color: red;">Error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>
