@@ -294,16 +294,20 @@ const Footer = () => {
             {/* Social Icons */}
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://www.facebook.com/nguyenvuuu0211" 
+                target="_blank"
+                rel="noreferrer"
                 className="bg-purple-700 hover:bg-purple-600 p-2 rounded-lg transition-all duration-300 flex items-center justify-center text-white text-xl"
-                aria-label={t('remaining.facebook')}
+                aria-label="Facebook"
               >
                 <FaFacebook />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/neyugnxuv/" 
+                target="_blank"
+                rel="noreferrer"
                 className="bg-purple-700 hover:bg-purple-600 p-2 rounded-lg transition-all duration-300 flex items-center justify-center text-white text-xl"
-                aria-label={t('remaining.instagram')}
+                aria-label="Instagram"
               >
                 <FaInstagram />
               </a>

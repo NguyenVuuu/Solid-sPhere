@@ -12,93 +12,15 @@ const TeamProfiles = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Thach Taro",
+      name: "Nguyên Vũ",
       role: "Full stack developers",
-      masterRole: "Master in Frontend Developer",
+      masterRole: "Full Stack Developer",
       location: "VietNam",
       image: taki,
       socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
-      }
-    },
-    {
-      id: 2,
-      name: "Tung",
-      role: "Full stack developers",
-      masterRole: "Master in Backend Architecture",
-      location: "VietNam",
-      image: "/assets/img/member2.png",
-      socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
-      }
-    },
-    {
-      id: 3,
-      name: "Thien",
-      role: "Full stack developers",
-      masterRole: "Master in User Experience",
-      location: "VietNam",
-      image: "/assets/img/member3.png",
-      socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
-      }
-    },
-    {
-      id: 4,
-      name: "Minh",
-      role: "Full stack developers",
-      masterRole: "Master in Database Design",
-      location: "VietNam",
-      image: "/assets/img/member4.png",
-      socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
-      }
-    },
-    {
-      id: 5,
-      name: "Hoa",
-      role: "Full stack developers",
-      masterRole: "Master in DevOps",
-      location: "VietNam",
-      image: "/assets/img/member5.png",
-      socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
-      }
-    },
-    {
-      id: 6,
-      name: "Nam",
-      role: "Full stack developers",
-      masterRole: "Master in Mobile Development",
-      location: "VietNam",
-      image: "/assets/img/member6.png",
-      socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
-      }
-    },
-    {
-      id: 7,
-      name: "Linh",
-      role: "Full stack developers",
-      masterRole: "Master in AI/ML",
-      location: "VietNam",
-      image: "/assets/img/member7.png",
-      socialLinks: {
-        linkedin: "https://www.linkedin.com/",
-        dribbble: "https://dribbble.com/",
-        github: "https://github.com/"
+        linkedin: "https://www.linkedin.com/in/nguyenvuuu/",
+        dribbble: "https://www.facebook.com/nguyenvuuu0211",
+        github: "https://github.com/NguyenVuuu"
       }
     }
   ];
@@ -193,7 +115,7 @@ const TeamProfiles = () => {
               </div>
               <div>
                 <h3>{t('product.email')}</h3>
-                <p><a href="mailto:thachtaro123@gmail.com">{t('product.thachtaro123gmailcom')}</a></p>
+                <p><a href="mailto:nguyenvu2112004@gmail.com">nguyenvu2112004@gmail.com</a></p>
               </div>
             </div>
           </div>

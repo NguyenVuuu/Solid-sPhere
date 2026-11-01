@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProfileCard.css'; // Chỉ cần import, không cần 'styles'
 
-import { FaLinkedin, FaDribbble, FaGithub, FaInfoCircle } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaGithub, FaInfoCircle } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
 const ProfileCard = ({ memberData }) => {
@@ -46,7 +46,7 @@ const ProfileCard = ({ memberData }) => {
 
           <a href={socialLinks.dribbble} target="_blank" rel="noreferrer" className="infoSocialLink">
             <span className="infoSocialIcon">
-              <FaDribbble />
+              <FaFacebook />
             </span>
           </a>
 
