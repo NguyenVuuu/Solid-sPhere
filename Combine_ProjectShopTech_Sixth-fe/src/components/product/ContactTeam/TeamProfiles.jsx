@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileCard from './ProfileCard';
 import './TeamProfiles.css';
-import taki from "../../../assets/taro.jpg";
+import taki from "../../../assets/gengar.jpg";
 import { FaTools, FaUser, FaMoneyBillWave } from 'react-icons/fa';
 import { MdLocationOn, MdPhone, MdAccessTime, MdEmail } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';

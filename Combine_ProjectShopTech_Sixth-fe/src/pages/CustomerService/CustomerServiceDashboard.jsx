@@ -39,6 +39,8 @@ const CustomerServiceDashboard = () => {
 
   // Kết nối WebSocket
   useEffect(() => {
+    let isMounted = true;
+
     loadSessions();
     const socket = new SockJS(WS_URL);
     const client = Stomp.over(socket);
@@ -47,14 +49,17 @@ const CustomerServiceDashboard = () => {
     client.connect(
       {},
       () => {
+        if (!isMounted) return;
         setStompClient(client);
         setConnected(true);
         client.subscribe("/topic/chat/global", async msg => {
+          if (!isMounted) return;
           const body = JSON.parse(msg.body);
           if (body.type === "NEW_SESSION") await loadSessions();
           if (body.type === "NEW_MESSAGE") {
             const { sessionCode, senderType, content } = body;
 
+            if (!isMounted) return;
             setSessions(prev => {
               let updated = [...prev];
               const idx = updated.findIndex(s => s.sessionCode === sessionCode);
@@ -78,19 +83,21 @@ const CustomerServiceDashboard = () => {
               return updated;
             });
 
-            if (selectedSession?.sessionCode === sessionCode) {
+            if (isMounted && selectedSession?.sessionCode === sessionCode) {
               setMessages(prev => [...prev, body]);
             }
           }
         });
       },
       error => {
+        if (!isMounted) return;
         console.error("❌ WebSocket failed:", error);
         setConnected(false);
       }
     );
 
     return () => {
+      isMounted = false;
       if (client.connected)
         client.disconnect(() => console.log("🔌 Disconnected"));
     };

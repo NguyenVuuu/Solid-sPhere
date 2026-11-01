@@ -122,8 +122,8 @@
 }
 
 .teamProfiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 2rem;
   background: transparent;
   position: relative;
