@@ -249,25 +249,16 @@ Sau khi chạy Backend, truy cập Swagger UI tại:
 
 ## 👥 Nhóm phát triển
 
-**Nguyễn Vũ**
+**Nguyên Vũ**
 - 📧 Email: nguyenvu2112004@gmail.com
 - � LinkedIn: [linkedin.com/in/nguyenvuuu](https://www.linkedin.com/in/nguyenvuuu/)
 - � GitHub: [github.com/NguyenVuuu](https://github.com/NguyenVuuu)
 - � Facebook: [facebook.com/nguyenvuuu0211](https://www.facebook.com/nguyenvuuu0211)
 
-**Địa chỉ:** 466/12 Nguyễn Văn Bảo, Quận Gò Vấp, TP. Hồ Chí Minh
 
 ## � License
 
 Dự án này được phát triển cho mục đích học tập tại Đại học Công nghiệp TP.HCM (IUH).
-
-## 🐛 Known Issues & Roadmap
-
-- [ ] Optimize image loading and caching
-- [ ] Add more payment methods
-- [ ] Implement push notifications
-- [ ] Add product recommendation system
-- [ ] Mobile app version
 
 ## 🙏 Acknowledgments
 
