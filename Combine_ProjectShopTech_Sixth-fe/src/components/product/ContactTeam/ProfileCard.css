@@ -16,7 +16,7 @@
 .cardImg {
   width: 120px;
   border-radius: 20%;
-  margin-left: 2px;
+  margin-left: 0;
   object-fit: cover;
 }
 
@@ -41,7 +41,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .cardName, .cardProfession {
@@ -72,15 +72,16 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 2.5rem 1.5rem 3.3rem;
   border-radius: 1rem 1rem 11rem 11rem;
-  clip-path: circle(19px at 249px 51px);
+  clip-path: circle(19px at 50% 50%);
   transition: clip-path 0.4s ease-in-out;
   backdrop-filter: blur(10px);
 }
 
 .infoIcon {
   position: absolute;
-  top: 1.95rem;
-  right: 1.3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 24px;
   height: 24px;
   background: rgba(0, 0, 0, 0.8);
@@ -90,8 +91,6 @@
   cursor: pointer;
   transition: opacity 0.3s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-
-  transform: translate(-12px, 15px);
 }
 
 .infoLetter {

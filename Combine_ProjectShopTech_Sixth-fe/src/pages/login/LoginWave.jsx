@@ -42,18 +42,11 @@ function AuthCard() {
     if (user) {
       const userRole = getUserRole();
       const from = location.state?.from?.pathname || "/";
-
-      // Redirect based on role
-      if (userRole === 'admin') {
-        navigate('/admin', { replace: true });
-      } else if (userRole === 'customer_service') {
-        navigate('/customer-service', { replace: true });
-      } else {
-        // For customers, either go to the page they were trying to access or home
-        navigate(from, { replace: true });
-      }
+      // Redirect tất cả role về trang chủ hoặc trang trước để tránh lỗi React #300
+      // Admin và customer_service sẽ thấy link quản lý trong header
+      navigate(from === '/login' ? '/' : from, { replace: true });
     }
-  }, [user, getUserRole, navigate, location]);
+  }, [user]);
   // Form state
   const [signUpForm, setSignUpForm] = useState({
     fullName: '',
