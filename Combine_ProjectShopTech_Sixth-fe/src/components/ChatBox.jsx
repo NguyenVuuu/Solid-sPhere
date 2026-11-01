@@ -60,6 +60,12 @@ const ChatBox = () => {
   // ── Conditional returns SAU khi đã khai báo hết hooks ──
 
   // Ẩn ChatBox nếu user là nhân viên chăm sóc khách hàng
+  // Keep this hook before the role/path early returns so hook order remains
+  // stable when logging in or out as admin/customer service.
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   if (isCustomerService) {
     return null;
   }
@@ -289,15 +295,6 @@ const bubbles = [
     const nextIndex = (currentIndex + 1) % themeOptions.length;
     setColorTheme(themeOptions[nextIndex]);
   };
-
-  // Auto-scroll to bottom when new messages are added
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
 
   // Simulate typing indicator
   const simulateTyping = () => {
