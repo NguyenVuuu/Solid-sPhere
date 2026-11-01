@@ -97,17 +97,17 @@
 
 .infoLetter {
   color: #ffffff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   font-family: "Arial", sans-serif;
-  line-height: 1;
+  line-height: 24px;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 24px;
+  text-align: center;
+  transform: translateY(2px);
 }
 
 .infoImg {
