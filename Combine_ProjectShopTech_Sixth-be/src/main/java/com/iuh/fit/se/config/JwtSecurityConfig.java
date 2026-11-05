@@ -38,6 +38,7 @@ public class JwtSecurityConfig {
 
     private static final String[] WHITE_LIST = {
             //login,logout,register
+            "/api/health",
             "/api/auth/**",
             //swagger
             "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html",
