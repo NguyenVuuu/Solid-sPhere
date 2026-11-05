@@ -1,0 +1,31 @@
+name: Keep Render Alive
+
+on:
+  schedule:
+    # Render Free web services sleep after 15 minutes without inbound traffic.
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-backend-keepalive
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: Wake and ping Render Backend
+        run: |
+          curl --fail --silent --show-error --location \
+            --connect-timeout 15 \
+            --max-time 120 \
+            --retry 5 \
+            --retry-delay 5 \
+            --retry-all-errors \
+            --header "User-Agent: github-actions-render-keepalive" \
+            https://solid-sphere.onrender.com/api/health
